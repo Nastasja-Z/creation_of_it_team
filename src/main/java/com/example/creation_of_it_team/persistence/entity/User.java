@@ -16,7 +16,7 @@ public class User {
 
     private String userPassword;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "role_id")
     private Set<Role> role;
 
