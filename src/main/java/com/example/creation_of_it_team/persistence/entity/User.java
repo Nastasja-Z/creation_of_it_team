@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="current_user")
+@Table(name = "current_user")
 public class User {
 
     @Id
@@ -19,6 +19,10 @@ public class User {
     @ManyToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "role_id")
     private Set<Role> role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "project_id", referencedColumnName = "project_id")   // maybe name of java field *projectId
+    private CurrentProject currentProjectId;
 
     public Long getUserId() {
         return userId;
@@ -50,5 +54,13 @@ public class User {
 
     public void setRole(Set<Role> role) {
         this.role = role;
+    }
+
+    public CurrentProject getCurrentProjectId() {
+        return currentProjectId;
+    }
+
+    public void setCurrentProjectId(CurrentProject currentProjectId) {
+        this.currentProjectId = currentProjectId;
     }
 }

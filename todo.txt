@@ -1,0 +1,24 @@
+have done:
+    user, role, competence, indicator, currentproject, keys
+
+check:
+    user-project
+    candidate /empl, salary/
+    all data classes
+
+in progress:
+    data.sql
+    properties
+    pom
+
+to do:
+    repositories
+    services
+    controllers
+    validation
+    cache
+    ...
+
+    tests?
+
+
