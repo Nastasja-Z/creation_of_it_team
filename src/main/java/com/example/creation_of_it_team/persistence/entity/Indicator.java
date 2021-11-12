@@ -15,8 +15,8 @@ public class Indicator {
     @Column(name = "indicator_name", nullable = false)
     private String indicatorName;
 
-    @OneToMany(mappedBy = "indicators")
-    private Set<CurrentProject> currentProjects;
+    @OneToMany(mappedBy = "indicator")
+    private Set<ProjectIndicator> projectIndicatorSet;
 
     public Long getIndicatorId() {
         return indicatorId;
@@ -34,11 +34,11 @@ public class Indicator {
         this.indicatorName = indicatorName;
     }
 
-    public Set<CurrentProject> getCurrentProjects() {
-        return currentProjects;
+    public Set<ProjectIndicator> getProjectIndicatorSet() {
+        return projectIndicatorSet;
     }
 
-    public void setCurrentProjects(Set<CurrentProject> currentProjects) {
-        this.currentProjects = currentProjects;
+    public void setProjectIndicatorSet(Set<ProjectIndicator> projectIndicatorSet) {
+        this.projectIndicatorSet = projectIndicatorSet;
     }
 }

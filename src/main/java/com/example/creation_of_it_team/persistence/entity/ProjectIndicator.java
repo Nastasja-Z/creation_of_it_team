@@ -9,12 +9,12 @@ public class ProjectIndicator {
     @EmbeddedId
     private ProjectIndicatorKey id;
 
-    @ManyToMany
+    @ManyToOne
     @MapsId("projectId")
     @JoinColumn(name = "project_id")
     private CurrentProject currentProject;
 
-    @ManyToMany
+    @ManyToOne
     @MapsId("indicatorId")
     @JoinColumn(name = "indicator_id")
     private Indicator indicator;

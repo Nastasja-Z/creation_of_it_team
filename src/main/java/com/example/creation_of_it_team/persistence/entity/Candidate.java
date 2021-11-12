@@ -12,8 +12,8 @@ public class Candidate {
     @Column(name = "candidate_id")
     private Long candidateId;
 
-    @OneToMany(mappedBy = "candidates")
-    private Set<Competence> competences;
+    @OneToMany(mappedBy = "candidate")
+    private Set<CandidateCompetence> candidateCompetenceSet;
 
     private String nameOfCandidate;
 
@@ -31,12 +31,12 @@ public class Candidate {
         this.candidateId = candidateId;
     }
 
-    public Set<Competence> getCompetences() {
-        return competences;
+    public Set<CandidateCompetence> getCandidateCompetenceSet() {
+        return candidateCompetenceSet;
     }
 
-    public void setCompetences(Set<Competence> competences) {
-        this.competences = competences;
+    public void setCandidateCompetenceSet(Set<CandidateCompetence> candidateCompetenceSet) {
+        this.candidateCompetenceSet = candidateCompetenceSet;
     }
 
     public String getNameOfCandidate() {

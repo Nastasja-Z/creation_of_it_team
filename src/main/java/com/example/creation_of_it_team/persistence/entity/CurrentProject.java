@@ -16,8 +16,8 @@ public class CurrentProject {
     @Column(name = "project_name", nullable = false)
     private String nameOfProject;
 
-    @OneToMany(mappedBy = "projects")
-    private Set<Indicator> indicators;
+    @OneToMany(mappedBy = "currentProject")
+    private Set<ProjectIndicator> projectIndicatorSet;
 
     @Column(nullable = false)
     private Integer budget;
@@ -28,8 +28,51 @@ public class CurrentProject {
     @Column(name = "end_project") // nullable??
     private Date endOfProject;    // validate!!!
 
+    public Integer getProjectId() {
+        return projectId;
+    }
 
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
 
+    public String getNameOfProject() {
+        return nameOfProject;
+    }
 
+    public void setNameOfProject(String nameOfProject) {
+        this.nameOfProject = nameOfProject;
+    }
 
+    public Set<ProjectIndicator> getProjectIndicatorSet() {
+        return projectIndicatorSet;
+    }
+
+    public void setProjectIndicatorSet(Set<ProjectIndicator> projectIndicatorSet) {
+        this.projectIndicatorSet = projectIndicatorSet;
+    }
+
+    public Integer getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Integer budget) {
+        this.budget = budget;
+    }
+
+    public Date getStartOfProject() {
+        return startOfProject;
+    }
+
+    public void setStartOfProject(Date startOfProject) {
+        this.startOfProject = startOfProject;
+    }
+
+    public Date getEndOfProject() {
+        return endOfProject;
+    }
+
+    public void setEndOfProject(Date endOfProject) {
+        this.endOfProject = endOfProject;
+    }
 }

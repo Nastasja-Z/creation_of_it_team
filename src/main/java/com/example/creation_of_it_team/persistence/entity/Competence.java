@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="competences")
+@Table(name = "competences")
 public class Competence {
 
     @Id
@@ -15,8 +15,8 @@ public class Competence {
     @Column(name = "competence_name", nullable = false)
     private String competenceName;
 
-    @OneToMany(mappedBy = "competences")
-    private Set<Candidate> candidates;
+    @OneToMany(mappedBy = "competence")
+    private Set<CandidateCompetence> candidateCompetenceSet;
 
     public Long getCompetenceId() {
         return competenceId;
@@ -34,11 +34,11 @@ public class Competence {
         this.competenceName = competenceName;
     }
 
-    public Set<Candidate> getCandidates() {
-        return candidates;
+    public Set<CandidateCompetence> getCandidateCompetenceSet() {
+        return candidateCompetenceSet;
     }
 
-    public void setCandidates(Set<Candidate> candidates) {
-        this.candidates = candidates;
+    public void setCandidateCompetenceSet(Set<CandidateCompetence> candidateCompetenceSet) {
+        this.candidateCompetenceSet = candidateCompetenceSet;
     }
 }
