@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Set;
 
-public interface CandidateRepository extends JpaRepository<Candidate, Long> {
+public interface CompetenceRepository extends JpaRepository<Competence, Long> {
 
-    Candidate findByNameOfCandidate(String nameOfCandidate);
+    //Competence findByNameofcandidate(String candidateName);
+
+    //Set<Competence> findAllByCandidateOrderByLevel(Candidate candidate);
 }

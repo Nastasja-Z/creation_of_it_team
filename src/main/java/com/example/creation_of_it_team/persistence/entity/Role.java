@@ -9,18 +9,18 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private Integer roleId;
+    private Long roleId;
 
     private String name;
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer id) {
+    public void setRoleId(Long id) {
         this.roleId = id;
     }
 

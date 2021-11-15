@@ -11,7 +11,7 @@ public class CurrentProject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
-    private Integer projectId;
+    private Long projectId;
 
     @Column(name = "project_name", nullable = false)
     private String nameOfProject;
@@ -28,11 +28,11 @@ public class CurrentProject {
     @Column(name = "end_project") // nullable??
     private Date endOfProject;    // validate!!!
 
-    public Integer getProjectId() {
+    public Long getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Integer projectId) {
+    public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
 
