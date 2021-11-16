@@ -3,6 +3,7 @@ package com.example.creation_of_it_team.service.impl;
 import com.example.creation_of_it_team.persistence.entity.User;
 import com.example.creation_of_it_team.persistence.repository.UserRepository;
 import com.example.creation_of_it_team.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -10,12 +11,8 @@ import java.util.Collection;
 @Service
 public class UserServiceImpl implements UserService {
 
-
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private  UserRepository userRepository;
 
     @Override
     public void create(User user) {
@@ -44,6 +41,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUserName(username);
+        return userRepository.findByUsername(username);
     }
 }

@@ -3,7 +3,7 @@ package com.example.creation_of_it_team.persistence.repository;
 import com.example.creation_of_it_team.persistence.entity.CurrentProject;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProjectRepository extends JpaRepository<CurrentProject, Integer> {
+public interface ProjectRepository extends JpaRepository<CurrentProject, Long> {
 
-    CurrentProject findByNameOfProject(String nameOfProject);
+    //CurrentProject findByNameOfProject(String nameOfProject);
 }

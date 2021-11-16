@@ -12,17 +12,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    private String userName;
+    private String username;
 
-    private String userPassword;
+    private String password;
 
     @ManyToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "role_id")
     private Set<Role> roles;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_id", referencedColumnName = "project_id")
-    private CurrentProject currentProjectId;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<CurrentProject> currentProjects;
+
+    public Set<CurrentProject> getCurrentProjects() {
+        return currentProjects;
+    }
+
+    public void setCurrentProjects(Set<CurrentProject> currentProjects) {
+        this.currentProjects = currentProjects;
+    }
 
     public Long getUserId() {
         return userId;
@@ -32,20 +39,20 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Role> getRoles() {
@@ -54,13 +61,5 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public CurrentProject getCurrentProjectId() {
-        return currentProjectId;
-    }
-
-    public void setCurrentProjectId(CurrentProject currentProjectId) {
-        this.currentProjectId = currentProjectId;
     }
 }

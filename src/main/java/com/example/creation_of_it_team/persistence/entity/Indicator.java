@@ -1,7 +1,6 @@
 package com.example.creation_of_it_team.persistence.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "indicators")
@@ -12,11 +11,30 @@ public class Indicator {
     @Column(name = "indicator_id")
     private Long indicatorId;
 
-    @Column(name = "indicator_name", nullable = false)
+    @Column(name = "indicator_name")
     private String indicatorName;
 
-    @OneToMany(mappedBy = "indicator")
-    private Set<ProjectIndicator> projectIndicatorSet;
+    @ManyToOne
+    @JoinColumn(name = "project_id", nullable = false)
+    private CurrentProject project;
+
+    private Integer level;
+
+    public CurrentProject getProject() {
+        return project;
+    }
+
+    public void setProject(CurrentProject project) {
+        this.project = project;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
     public Long getIndicatorId() {
         return indicatorId;
@@ -32,13 +50,5 @@ public class Indicator {
 
     public void setIndicatorName(String indicatorName) {
         this.indicatorName = indicatorName;
-    }
-
-    public Set<ProjectIndicator> getProjectIndicatorSet() {
-        return projectIndicatorSet;
-    }
-
-    public void setProjectIndicatorSet(Set<ProjectIndicator> projectIndicatorSet) {
-        this.projectIndicatorSet = projectIndicatorSet;
     }
 }

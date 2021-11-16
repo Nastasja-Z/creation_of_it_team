@@ -4,17 +4,17 @@ import com.example.creation_of_it_team.persistence.entity.Candidate;
 import com.example.creation_of_it_team.persistence.entity.Competence;
 import com.example.creation_of_it_team.persistence.repository.CandidateRepository;
 import com.example.creation_of_it_team.service.CandidateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Set;
 
+@Service
 public class CandidateServiceImpl implements CandidateService {
 
-    private final CandidateRepository candidateRepository;
-
-    public CandidateServiceImpl(CandidateRepository candidateRepository) {
-        this.candidateRepository = candidateRepository;
-    }
+    @Autowired
+    private CandidateRepository candidateRepository;
 
     @Override
     public void create(Candidate candidate) {

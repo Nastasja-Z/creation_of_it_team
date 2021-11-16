@@ -13,7 +13,7 @@ public class Candidate {
     private Long candidateId;
 
     @OneToMany(mappedBy = "candidate")
-    private Set<CandidateCompetence> candidateCompetenceSet;
+    private Set<Competence> competences;
 
     private String nameOfCandidate;
 
@@ -23,20 +23,20 @@ public class Candidate {
 
     private Integer employment; // ограничение часов в сутках или ??
 
+    public Set<Competence> getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(Set<Competence> competences) {
+        this.competences = competences;
+    }
+
     public Long getCandidateId() {
         return candidateId;
     }
 
     public void setCandidateId(Long candidateId) {
         this.candidateId = candidateId;
-    }
-
-    public Set<CandidateCompetence> getCandidateCompetenceSet() {
-        return candidateCompetenceSet;
-    }
-
-    public void setCandidateCompetenceSet(Set<CandidateCompetence> candidateCompetenceSet) {
-        this.candidateCompetenceSet = candidateCompetenceSet;
     }
 
     public String getNameOfCandidate() {

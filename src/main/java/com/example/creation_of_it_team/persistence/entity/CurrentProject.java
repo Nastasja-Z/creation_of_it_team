@@ -13,20 +13,32 @@ public class CurrentProject {
     @Column(name = "project_id")
     private Long projectId;
 
-    @Column(name = "project_name", nullable = false)
+    @Column(name = "project_name")
     private String nameOfProject;
 
-    @OneToMany(mappedBy = "currentProject")
-    private Set<ProjectIndicator> projectIndicatorSet;
+    @OneToMany(mappedBy = "project")
+    private Set<Indicator> indicators;
 
     @Column(nullable = false)
     private Integer budget;
 
-    @Column(name = "start_project", nullable = false)
+    @Column(name = "start_project")
     private Date startOfProject;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "end_project") // nullable??
     private Date endOfProject;    // validate!!!
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Long getProjectId() {
         return projectId;
@@ -42,14 +54,6 @@ public class CurrentProject {
 
     public void setNameOfProject(String nameOfProject) {
         this.nameOfProject = nameOfProject;
-    }
-
-    public Set<ProjectIndicator> getProjectIndicatorSet() {
-        return projectIndicatorSet;
-    }
-
-    public void setProjectIndicatorSet(Set<ProjectIndicator> projectIndicatorSet) {
-        this.projectIndicatorSet = projectIndicatorSet;
     }
 
     public Integer getBudget() {
@@ -74,5 +78,13 @@ public class CurrentProject {
 
     public void setEndOfProject(Date endOfProject) {
         this.endOfProject = endOfProject;
+    }
+
+    public Set<Indicator> getIndicators() {
+        return indicators;
+    }
+
+    public void setIndicators(Set<Indicator> indicators) {
+        this.indicators = indicators;
     }
 }

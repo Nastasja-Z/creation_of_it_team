@@ -15,8 +15,27 @@ public class Competence {
     @Column(name = "competence_name", nullable = false)
     private String competenceName;
 
-    @OneToMany(mappedBy = "competence")
-    private Set<CandidateCompetence> candidateCompetenceSet;
+    @ManyToOne
+    @JoinColumn(name="candidate_id", nullable = false)
+    private Candidate candidate;
+
+    private Integer level;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public Candidate getCandidate() {
+        return candidate;
+    }
+
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
+    }
 
     public Long getCompetenceId() {
         return competenceId;
@@ -32,13 +51,5 @@ public class Competence {
 
     public void setCompetenceName(String competenceName) {
         this.competenceName = competenceName;
-    }
-
-    public Set<CandidateCompetence> getCandidateCompetenceSet() {
-        return candidateCompetenceSet;
-    }
-
-    public void setCandidateCompetenceSet(Set<CandidateCompetence> candidateCompetenceSet) {
-        this.candidateCompetenceSet = candidateCompetenceSet;
     }
 }
