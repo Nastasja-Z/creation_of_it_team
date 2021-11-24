@@ -13,3 +13,11 @@ values ('$2a$10$RYofohWktwl5xDkPm9FQQuwjubusMDz9rfO21tUWb1dB.41HRBq3C', 'admin')
 insert into users_roles
 values ((select user_id from users where username = 'admin'), (select role_id from role where name = 'ROLE_ADMIN')),
        ((select user_id from users where username = 'testuser'), (select role_id from role where name = 'ROLE_USER'));
+
+insert into candidates(name_of_candidate, surname_of_candidate, salary_pro_hour, employment)
+values ('test1', 'test1', 11.00, 1),
+       ('test2', 'test2', 22.00, 2);
+
+insert into competences(competence_name,level, candidate_id)
+values ('test1', 3, (select candidate_id from candidates where name_of_candidate = 'test1')),
+       ('test2', 4, (select candidate_id from candidates where name_of_candidate = 'test1'));

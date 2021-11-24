@@ -1,19 +1,23 @@
 package com.example.creation_of_it_team.service.impl;
 
-import com.example.creation_of_it_team.persistence.entity.Candidate;
+
 import com.example.creation_of_it_team.persistence.entity.Competence;
+import com.example.creation_of_it_team.persistence.repository.CandidateRepository;
 import com.example.creation_of_it_team.persistence.repository.CompetenceRepository;
 import com.example.creation_of_it_team.service.CompetenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Set;
+
 @Service
 public class CompetenceServiceImpl implements CompetenceService {
 
     @Autowired
     private CompetenceRepository competenceRepository;
+
+    @Autowired
+    private CandidateRepository candidateRepository;
 
     @Override
     public void create(Competence competence) {
@@ -40,8 +44,9 @@ public class CompetenceServiceImpl implements CompetenceService {
         return competenceRepository.findAll();
     }
 
-    /*public Set<Competence> getAllCompetencesByCandidate(Candidate candidate) {
-        return competenceRepository.findAllByCandidateOrderByLevel(candidate);
-    }*/
+    @Override
+    public Collection<Competence> findAllByCandidateId(Long candidateId) {
+        return competenceRepository.findAllByCandidateId(candidateId);
+    }
 
 }

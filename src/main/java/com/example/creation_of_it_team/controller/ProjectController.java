@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
@@ -18,6 +20,19 @@ public class ProjectController {
 
     @Autowired
     private IndicatorService indicatorService;
+
+    @GetMapping
+    public String findAll(Model model) {
+        Collection<CurrentProject> projects = projectService.findAll();
+        model.addAttribute("projects", projects);
+        return "projects/projects_all";
+    }
+
+    @GetMapping("/new")
+    public String redirectToNewProject(Model model) {
+        model.addAttribute("project", new CurrentProject());
+        return "projects/projects_new";
+    }
 
     @GetMapping("/all_indicators")
     public String getFullInfoAboutProject(Model model) {
@@ -31,9 +46,15 @@ public class ProjectController {
         return "projectDetails";
     }
 
-    @PostMapping("/new_project")
+    @PostMapping("/new")
     public String createProject(@ModelAttribute("project") CurrentProject project) {
         projectService.create(project);
+        return "redirect:/projects";
+    }
+
+    @PostMapping("/update")
+    public String updateProject(@ModelAttribute("project") CurrentProject project) {
+        projectService.update(project);
         return "redirect:/projects";
     }
 
@@ -51,4 +72,9 @@ public class ProjectController {
         return "redirect:/projects";  // another redirect
     }
 
+    @PostMapping("/update_indicator")
+    public String updateIndicator(@ModelAttribute("indicator") Indicator indicator) {
+        indicatorService.update(indicator);
+        return "redirect:/projects";
+    }
 }

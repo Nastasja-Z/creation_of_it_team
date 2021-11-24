@@ -25,6 +25,8 @@
                                 <th>name_first</th>
                                 <th>name_last</th>
                                 <th>employment</th>
+                                <th>add competence</th>
+                                <th>details</th>
                                 <th>delete</th>
                             </tr>
                             </thead>
@@ -36,11 +38,19 @@
                                 <td th:text="${candidate.surnameOfCandidate}"></td>
                                 <td th:text="${candidate.employment}"></td>
                                 <td>
+                                    <a th:href="@{/candidates/newCompetence}" type="button" class="btn btn-default">Add Competence </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" th:href="@{'/candidates/getCandidateDetails/' + ${candidate.candidateId}}">Details</a>
+                                </td>
+                                <td>
                                     <a th:href="@{'/candidates/delete/' + ${candidate.candidateId}}" type="button" class="btn btn-default">Delete</a>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+
+
                     </div>
                 </div>
             </div>

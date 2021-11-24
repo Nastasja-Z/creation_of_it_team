@@ -17,19 +17,22 @@
                     Create Candidate
                 </div>
                 <div class="card-body">
-                    <form action="#" th:action="@{/candidates/new}" method="post" th:object="${candidate}">
+                    <form action="#" th:action="@{/candidates/newCompetence}" method="post" th:object="${competence}">
                         <div class="form-group">
-                            <label for="name">Name of candidate</label>
-                            <input type="text" class="form-control" id="name" placeholder="Please enter name" th:field="*{nameOfCandidate}">
+                            <label for="name">Name of competence</label>
+                            <input type="text" class="form-control" id="name" placeholder="Please enter name of competence" th:field="*{competenceName}">
                         </div>
                         <div class="form-group">
                             <label for="name2">Surname</label>
-                            <input type="text" class="form-control" id="name2" placeholder="Please enter surname" th:field="*{surnameOfCandidate}">
+                            <input type="number" class="form-control" id="name2" placeholder="Please enter level" th:field="*{level}">
                         </div>
                         <div class="form-group">
-                            <label for="age">Employment</label>
-                            <input type="number" class="form-control" id="age" placeholder="Please enter employment" th:field="*{employment}">
+                            <select th:field="*{candidate}">
+                                <option value="">Choose..</option>
+                                <option th:each="candidate: ${candidates}" th:value="${candidate.candidateId}" th:text="${candidate.nameOfCandidate}+' '+ ${candidate.surnameOfCandidate}" />
+                            </select>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>
                 </div>

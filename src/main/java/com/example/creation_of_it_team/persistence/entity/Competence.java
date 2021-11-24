@@ -1,6 +1,7 @@
 package com.example.creation_of_it_team.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -37,6 +38,17 @@ public class Competence {
         this.candidate = candidate;
     }
 
+    public Long getCandidateId() {
+        return this.candidate == null ? null : this.candidate.getCandidateId();
+    }
+
+    public void setCandidateId(Long candidateId) {
+        if (this.candidate == null) {
+            this.setCandidate(new Candidate());
+        }
+        this.getCandidate().setCandidateId(candidateId);
+    }
+
     public Long getCompetenceId() {
         return competenceId;
     }
@@ -51,5 +63,18 @@ public class Competence {
 
     public void setCompetenceName(String competenceName) {
         this.competenceName = competenceName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Competence that = (Competence) o;
+        return Objects.equals(competenceId, that.competenceId) && Objects.equals(competenceName, that.competenceName) && Objects.equals(candidate, that.candidate) && Objects.equals(level, that.level);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(competenceId, competenceName, candidate, level);
     }
 }

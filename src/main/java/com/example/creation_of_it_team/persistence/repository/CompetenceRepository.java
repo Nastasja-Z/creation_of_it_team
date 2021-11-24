@@ -1,14 +1,15 @@
 package com.example.creation_of_it_team.persistence.repository;
 
-import com.example.creation_of_it_team.persistence.entity.Candidate;
 import com.example.creation_of_it_team.persistence.entity.Competence;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import java.util.Set;
+import java.util.Collection;
 
 public interface CompetenceRepository extends JpaRepository<Competence, Long> {
 
-    //Competence findByNameofcandidate(String candidateName);
+    @Query("FROM Competence p WHERE p.candidate.candidateId = :candidateId ORDER BY p.competenceName")
+    Collection<Competence> findAllByCandidateId(@Param("candidateId") Long candidateId);
 
-    //Set<Competence> findAllByCandidateOrderByLevel(Candidate candidate);
 }

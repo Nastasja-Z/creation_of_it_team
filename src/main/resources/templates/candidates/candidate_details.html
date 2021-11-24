@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Candidate Details
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name_first</th>
+                            <th>name_last</th>
+                            <th>employment</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:object="${candidate}">
+                            <td th:text="${candidate.candidateId}"></td>
+                            <td th:text="${candidate.nameOfCandidate}"></td>
+                            <td th:text="${candidate.surnameOfCandidate}"></td>
+                            <td th:text="${candidate.employment}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>id</th>
+                            <th>competence</th>
+                            <th>level</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="competence,iter : ${competences}">
+                            <td th:text="${iter.count}"></td>
+                            <td th:text="${competence.competenceId}"></td>
+                            <td th:text="${competence.competenceName}"></td>
+                            <td th:text="${competence.level}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

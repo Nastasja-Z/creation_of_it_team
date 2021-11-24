@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProjectRepository extends JpaRepository<CurrentProject, Long> {
 
-    //CurrentProject findByNameOfProject(String nameOfProject);
 }

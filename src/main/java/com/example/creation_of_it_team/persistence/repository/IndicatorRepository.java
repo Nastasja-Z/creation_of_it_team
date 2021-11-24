@@ -7,6 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface IndicatorRepository extends JpaRepository<Indicator, Long> {
 
     Iterable<Indicator> findAllByProject(CurrentProject currentProject);
-
-    //Indicator findByIndicatorName(String indicatorName);
 }
